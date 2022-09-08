@@ -4,6 +4,7 @@ const AppHook = () => {
     const [temp, setTemp] = useState(" ")
     const [escala, setEscala] = useState("C")
     const [result, setResult] = useState(" ")
+    const [resultEscala, setResultEscala] = useState(" ")
 
     const convTemp = () => {
         let resultTemp
@@ -17,7 +18,16 @@ const AppHook = () => {
             resultEscala = "F"
         }
 
-        setResult(<p>Resultado: {resultTemp} {resultEscala}°</p>)
+        setResult(resultTemp)
+        setResultEscala(resultEscala)
+    }
+
+    const showResult = () => {
+        if (result !== " ") {
+            return <p>Resultado: {result} {resultEscala}°</p>
+        }
+
+        return null
     }
  
     return(
@@ -46,7 +56,7 @@ const AppHook = () => {
 
             <br /><br />
 
-            {result}
+            {showResult()}
 
         </div>
     )
